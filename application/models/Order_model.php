@@ -78,6 +78,7 @@ class Order_model extends CI_Model {
 
     //order in manager
     public function allOrdersByMID($id) {
+        $this->db->order_by('o.o_id','DESC');
         $this->db->select('*');
         $this->db->from('user_orders AS o');
         $this->db->join('user AS u','o.u_id = u.u_id');

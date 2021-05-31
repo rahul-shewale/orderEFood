@@ -36,7 +36,7 @@
             </div>
             <?php echo form_error('password'); ?>
             <button type="submit" class="btn btn-primary btn-block mb-2">Submit</button><br>
-            <p>New to Foodienator ? <a href="<?php echo base_url().'manager/singup'; ?>">Join now</a></p>
+            <p>New to Foodienater ? <a href="<?php echo base_url().'manager/singup'; ?>">Join now</a></p>
         </form>
     </div>
     <script>

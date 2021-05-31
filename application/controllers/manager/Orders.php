@@ -75,4 +75,14 @@ class Orders extends CI_Controller {
         redirect(base_url().'manager/orders/index');
     }
 
+    public function invoice($id) {
+        $order = $this->Order_model->orderInfoInvoice($id);
+        $data['order'] = $order;
+        if($order['o_status'] == 'closed') {
+            $this->load->view('manager/orders/invoice', $data);
+        } else {
+            $this->session->set_flashdata('error', 'order is not yet complete');
+            redirect(base_url().'manager/orders');
+        }
+    }
 }

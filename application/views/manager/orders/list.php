@@ -29,6 +29,7 @@
                         <th>Status</th>
                         <th>Order-date</th>
                         <th>Action</th>
+                        <th>Invoice</th>
                     </tr>
                 </thead>
                 <tbody id="myTable">
@@ -44,23 +45,31 @@
 
                         <?php $status=$order['o_status'];
 						if($status=="" or $status=="NULL") { ?>
-                        <td> <button type="button" class="btn btn-info" style="font-weight:bold;"><i class="fas fa-bars"></i> Dispatch</button></td>
+                        <td> <button type="button" class="btn btn-info" style="font-weight:bold;"><i
+                                    class="fas fa-bars"></i> Dispatch</button></td>
                         <?php } if($status=="in process") { ?>
                         <td> <button type="button" class="btn btn-warning"><span class="fa fa-cog fa-spin"
                                     aria-hidden="true"></span> On a Way!</button></td>
                         <?php } if($status=="closed") { ?>
-                        <td> <button type="button" class="btn btn-success"><span class="fa fa-check-circle"aria-hidden="true"></span> Delivered</button>
+                        <td> <button type="button" class="btn btn-success"><span class="fa fa-check-circle"
+                                    aria-hidden="true"></span> Delivered</button>
                         </td> <?php } ?> <?php if($status=="rejected") { ?>
-                        <td> <button type="button" class="btn btn-danger"><i class="far fa-times-circle"></i> cancelled</button>
+                        <td> <button type="button" class="btn btn-danger"><i class="far fa-times-circle"></i>
+                                cancelled</button>
                         </td>
                         <?php } ?>
                         <td><?php echo $order['order_date']; ?></td>
                         <td>
                             <a href="<?php echo base_url().'manager/orders/processOrder/'.$order['o_id'];?>"
-                                class="btn btn-info mb-1">                               <i class="fas fa-cog"></i> Process</a>
+                                class="btn btn-info mb-1"> <i class="fas fa-cog"></i> Process</a>
                             <a href="<?php echo base_url().'manager/orders/deleteOrder/'.$order['o_id']?>"
                                 class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
                         </td>
+                        <?php if($order['o_status'] == 'closed') { ?>
+                        <td><a href="<?php echo base_url().'manager/orders/invoice/'.$order['o_id']; ?>" class="btn btn-info"><i class="fas fa-file-alt"></i> Invoice</a></td>
+                        <?php } else { ?>
+                        <td><a href="#" onClick="invoiceAlert()" class="btn btn-info"><i class="fas fa-file-alt"></i> Invoice</a></td>
+                        <?php } ?>
                     </tr>
                     <?php } ?>
                     <?php } else {?>
@@ -78,6 +87,10 @@ function deleteOrder(id) {
     if (confirm("Are you sure you want to delete orders?")) {
         window.location.href = '<?php echo base_url().'manager/orders/deleteOrder/';?>' + id;
     }
+}
+
+function invoiceAlert() {
+    alert("Order Is Not Yet Complete");
 }
 
 $(document).ready(function() {

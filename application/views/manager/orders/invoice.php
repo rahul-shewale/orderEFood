@@ -74,7 +74,7 @@
         </footer>
     </div>
     <div class="container text-center">
-        <a href="<?php echo base_url().'orders' ?>" class="btn btn-sm btn-warning p-2"><i class="fas fa-angle-left"></i>
+        <a href="<?php echo base_url().'manager/orders' ?>" class="btn btn-sm btn-warning p-2"><i class="fas fa-angle-left"></i>
             Back to Orders</a>
     </div>
 

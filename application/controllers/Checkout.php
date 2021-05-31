@@ -19,7 +19,6 @@ class Checkout extends CI_Controller {
         $this->load->model('User_model');
         $this->controller = 'checkout';
     }
-
     public function index() {
        $loggedUser = $this->session->userdata('user');
        $u_id = $loggedUser['user_id'];

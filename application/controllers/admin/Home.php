@@ -42,7 +42,7 @@ class Home extends CI_Controller {
         $pdf = new Pdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
         // set document information
         $pdf->SetCreator(PDF_CREATOR);
-        $pdf->SetAuthor('www.foodienator.com');
+        $pdf->SetAuthor('www.Foodienater.com');
         $pdf->SetTitle('Report');
         $pdf->SetSubject('Report generated using Codeigniter and TCPDF');
         $pdf->SetKeywords('TCPDF, PDF, MySQL, Codeigniter');
